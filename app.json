@@ -1,0 +1,17 @@
+{
+  "name": "cryptocurrecyTracker",
+  "displayName": "cryptocurrecyTracker",
+  "expo": {
+    "name": "cryptocurrecyTracker",
+    "slug": "cryptocurrecyTracker",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
