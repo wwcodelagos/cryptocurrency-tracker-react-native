@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Button, Text } from 'react-native';
 import { Card} from 'react-native-elements'
 import CardComponent from '../components/Card';
+import getRequest from '../../lib/request';
 
 const currencies = [
   {
@@ -61,6 +62,11 @@ const currencies = [
  ]
 
 export default function HomeScreen({navigation}) {
+  useEffect(() => {
+    getRequest()
+      .then(data => console.log(data))
+  }, [])
+
   const goToDetails = () => {
     navigation.navigate('Details');
   }
