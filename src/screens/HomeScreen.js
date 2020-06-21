@@ -61,34 +61,35 @@ const currencies = [
   },
  ]
 
-export default function HomeScreen({navigation}) {
-  useEffect(() => {
-    getRequest()
-      .then(data => console.log(data))
-  }, [])
+export default class HomeScreen extends React.Component {
+  componentDidMount() {
+    getRequest().then(data => console.log(data))
+  }
 
-  const goToDetails = () => {
+  goToDetails = () => {
     navigation.navigate('Details');
   }
 
-  return (
-    <View style={styles.container}>
-    <Card containerStyle={styles.card} title='Total Value' titleStyle={{marginTop: 20, color: '#fff', fontWeight: 'normal', fontSize: 14}} dividerStyle={{backgroundColor: 'pink' }}>
-    <Text style={{borderRadius: 0, marginLeft: 110, fontSize: 28, marginTop: 0, color: '#fff', fontWeight: 'bold' }}>$ 524.00</Text>
-    </Card>
-    <View>
-    <Text style={styles.listHeader}>List of Coins</Text>
-      {currencies.map((currency, index) => {
-        return  <CardComponent onPress={goToDetails} key={index} currency={currency}/>
-      })}
-    </View>
-      
-    <Button
-      title="Go to Details Screen"
-      onPress={() => navigation.navigate('Details')}
-    />
-    </View>
-  );
+  render() {
+    return (
+      <View style={styles.container}>
+      <Card containerStyle={styles.card} title='Total Value' titleStyle={{marginTop: 20, color: '#fff', fontWeight: 'normal', fontSize: 14}} dividerStyle={{backgroundColor: 'pink' }}>
+      <Text style={{borderRadius: 0, marginLeft: 110, fontSize: 28, marginTop: 0, color: '#fff', fontWeight: 'bold' }}>$ 524.00</Text>
+      </Card>
+      <View>
+      <Text style={styles.listHeader}>List of Coins</Text>
+        {currencies.map((currency, index) => {
+          return  <CardComponent onPress={goToDetails} key={index} currency={currency}/>
+        })}
+      </View>
+        
+      <Button
+        title="Go to Details Screen"
+        onPress={() => navigation.navigate('Details')}
+      />
+      </View>
+    );
+  }
 }
   
   const styles = StyleSheet.create({
