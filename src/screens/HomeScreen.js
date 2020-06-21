@@ -67,7 +67,7 @@ export default class HomeScreen extends React.Component {
   }
 
   goToDetails = () => {
-    navigation.navigate('Details');
+    this.props.navigation.navigate('Details');
   }
 
   render() {
@@ -79,13 +79,13 @@ export default class HomeScreen extends React.Component {
       <View>
       <Text style={styles.listHeader}>List of Coins</Text>
         {currencies.map((currency, index) => {
-          return  <CardComponent onPress={goToDetails} key={index} currency={currency}/>
+          return  <CardComponent onPress={this.goToDetails} key={index} currency={currency}/>
         })}
       </View>
         
       <Button
         title="Go to Details Screen"
-        onPress={() => navigation.navigate('Details')}
+        onPress={this.goToDetails}
       />
       </View>
     );
