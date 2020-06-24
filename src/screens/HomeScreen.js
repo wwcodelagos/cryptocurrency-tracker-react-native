@@ -20,7 +20,7 @@ export default function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
       <ScrollView>
-    <Card containerStyle={styles.card} title='Total Value' titleStyle={{marginTop: 20, color: '#fff', fontWeight: 'normal', fontSize: 14}} dividerStyle={{backgroundColor: 'pink' }}>
+    <Card containerStyle={styles.card} title='Total Value' titleStyle={styles.titleStyle} dividerStyle={styles.dividerStyle}>
     <Text style={{borderRadius: 0, marginLeft: 110, fontSize: 28, marginTop: 0, color: '#fff', fontWeight: 'bold' }}>$ 524.00</Text>
     </Card>
     <View>
@@ -66,5 +66,14 @@ export default function HomeScreen({navigation}) {
       listHeader: {
         marginLeft: 150,
         marginTop: 20
+      },
+      titleStyle: {
+        marginTop: 20,
+        color: '#fff',
+        fontWeight: 'normal',
+        fontSize: 14
+      },
+      dividerStyle:{
+        backgroundColor: 'pink'
       }
   });
