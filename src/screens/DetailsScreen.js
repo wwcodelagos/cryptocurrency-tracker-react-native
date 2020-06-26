@@ -11,7 +11,7 @@ export default function DetailsScreen({navigation}) {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: 'pink',
+      backgroundColor: '#ee4266',
       alignItems: 'center',
       justifyContent: 'center',
     },
