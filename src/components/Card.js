@@ -1,20 +1,33 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native'
-import { Card } from 'react-native-elements'
+import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
+import { Card } from 'react-native-elements';
+import { getCoinIconUri } from '../../lib/constants';
 
 export default function CardComponent({currency, onPress}) {
+  const {symbol, name, priceUsd, changePercent24Hr, volumeUsd24Hr, } = currency;
     return (
       <TouchableOpacity onPress={onPress}>
       <Card containerStyle={styles.card}>
-        <View style={{flexDirection: 'row'}}>
+        <View style={styles.subContainer}>
             <Image
               style={styles.image}
-              source={{ uri: 'https://static.coincap.io/assets/icons/btc@2x.png' }}
+              source={{ uri: getCoinIconUri(name) }}
             />
-          <View style={{flexDirection: 'column', width: 100}}><Text>{currency.name}</Text><Text>{currency.symbol}</Text></View>
-          <View style={{flexDirection: 'column', width: 100}}><Text>{parseInt(currency.priceUsd).toFixed(2)}</Text></View>
-          <View style={{flexDirection: 'column', width: 100, alignItems: 'flex-end'}}><Text>{parseInt(currency.volumeUsd24Hr).toFixed(0)}</Text><Text>{parseInt(currency.changePercent24Hr).toFixed(2)}</Text></View>
-        </View>
+          <View style={styles.firstContainer}>
+            <Text style={styles.name}>{name}</Text>
+            <Text style={styles.symbol}>{symbol}</Text>
+          </View>
+          <View style={styles.middleContainer}>
+            <Text>$ {parseFloat(priceUsd).toFixed(2)}</Text>
+          </View>
+          <View style={styles.lastContainer}>
+            <Text>$ {parseFloat(volumeUsd24Hr).toFixed(0)}</Text>
+            { changePercent24Hr > 0 ?
+              <Text style={styles.changeUp}>{parseFloat(changePercent24Hr).toFixed(2)} %</Text>
+            : <Text style={styles.changeDown}>{parseFloat(changePercent24Hr).toFixed(2)} %</Text>
+            }
+            </View>
+          </View>
     </Card>
     </TouchableOpacity>
     )
@@ -41,7 +54,34 @@ export default function CardComponent({currency, onPress}) {
           width: 0,
           height:6,
         }
+      },
+      subContainer: {flexDirection: 'row'},
+      firstContainer: {
+        flexDirection: 'column',
+        alignItems: "flex-start",
+        width: 120,
+      },
+      middleContainer: {
+        flexDirection: 'column',
+        width: 80,
+        alignItems: 'center'
+      },
+      lastContainer: {
+        flexDirection: 'column',
+        alignItems: 'flex-end',
+        width: 100
+      },
+      symbol: {
+        fontSize: 10,
+        color: 'grey'
+      },
+      name: {
+        fontWeight: 'bold'
+      },
+      changeUp: {
+        color: '#849324'
+      },
+      changeDown: {
+        color: '#ee4266'
       }
   });
-  // export default withNavigation(CardComponent);
-

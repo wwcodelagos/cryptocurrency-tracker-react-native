@@ -17,7 +17,7 @@ function AppNavigator() {
           options={{
             title: 'Your Coins',
             headerStyle: {
-            backgroundColor: 'pink',
+            backgroundColor: '#ee4266',
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -30,7 +30,7 @@ function AppNavigator() {
           options={{
             title: 'Bitcoin',
             headerStyle: {
-            backgroundColor: 'pink',
+            backgroundColor: '#ee4266',
           },
           headerTintColor: '#fff',
           headerTitleStyle: {

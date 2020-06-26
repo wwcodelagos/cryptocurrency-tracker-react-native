@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, View, Button, Text, ScrollView } from 'react-native';
-import { Card} from 'react-native-elements'
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { Card} from 'react-native-elements';
 import CardComponent from '../components/Card';
 import getRequest from '../../lib/request';
 
 
 export default function HomeScreen({navigation}) {
-  const [currencies, setCurrencies] = useState([])
+  const [currencies, setCurrencies] = useState([]);
   const goToDetails = () => {
     navigation.navigate('Details');
   }
@@ -16,7 +16,7 @@ export default function HomeScreen({navigation}) {
     }
     getApi();
   }, [setCurrencies])
-    
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -29,10 +29,6 @@ export default function HomeScreen({navigation}) {
         return  <CardComponent onPress={goToDetails} key={index} currency={currency}/>
       })}
     </View>
-    <Button
-      title="Go to Details Screen"
-      onPress={() => navigation.navigate('Details')}
-    />
     </ScrollView>
     </View>
 
@@ -47,11 +43,12 @@ export default function HomeScreen({navigation}) {
     card: {
       justifyContent: 'flex-start',
       color: '#ffffff',
+      fontSize: 16,
         width: '90%',
         height: 150,
         marginTop: 20,
         alignSelf: 'center',
-        backgroundColor: 'pink',
+        backgroundColor: '#ee4266',
         borderRadius: 5,
         borderWidth: 1,
         shadowColor: '#000',
@@ -65,7 +62,9 @@ export default function HomeScreen({navigation}) {
       },
       listHeader: {
         marginLeft: 150,
-        marginTop: 20
+        marginTop: 20,
+        fontSize: 16,
+        fontWeight: 'bold',
       },
       titleStyle: {
         marginTop: 20,
@@ -74,6 +73,6 @@ export default function HomeScreen({navigation}) {
         fontSize: 14
       },
       dividerStyle:{
-        backgroundColor: 'pink'
+        backgroundColor: '#ee4266'
       }
   });
