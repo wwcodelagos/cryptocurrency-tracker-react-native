@@ -5,18 +5,18 @@ import { Card } from 'react-native-elements'
 export default function CardComponent({currency, onPress}) {
     return (
       <TouchableOpacity onPress={onPress}>
-        <Card containerStyle={styles.card}>
-          <View style={{flexDirection: 'row'}}>
-              <Image
-                style={styles.image}
-                source={{ uri: currency.avatar }}
-              />
-            <View style={{flexDirection: 'column', width: 100}}><Text>{currency.name}</Text><Text>{currency.symbol}</Text></View>
-            <View style={{flexDirection: 'column', width: 100}}><Text>{currency.price}</Text></View>
-            <View style={{flexDirection: 'column', width: 100, alignItems: 'flex-end'}}><Text>{currency.volumeUsd24Hr}</Text><Text>{currency.change}</Text></View>
-          </View>
-      </Card>
-      </TouchableOpacity>
+      <Card containerStyle={styles.card}>
+        <View style={{flexDirection: 'row'}}>
+            <Image
+              style={styles.image}
+              source={{ uri: 'https://static.coincap.io/assets/icons/btc@2x.png' }}
+            />
+          <View style={{flexDirection: 'column', width: 100}}><Text>{currency.name}</Text><Text>{currency.symbol}</Text></View>
+          <View style={{flexDirection: 'column', width: 100}}><Text>{parseInt(currency.priceUsd).toFixed(2)}</Text></View>
+          <View style={{flexDirection: 'column', width: 100, alignItems: 'flex-end'}}><Text>{parseInt(currency.volumeUsd24Hr).toFixed(0)}</Text><Text>{parseInt(currency.changePercent24Hr).toFixed(2)}</Text></View>
+        </View>
+    </Card>
+    </TouchableOpacity>
     )
 }
   
