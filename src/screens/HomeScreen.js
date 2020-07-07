@@ -2,14 +2,12 @@ import React, {useState, useEffect} from 'react';
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import { Card} from 'react-native-elements';
 import CardComponent from '../components/Card';
-import getRequest from '../../lib/request';
+import {getRequest} from '../../lib/request';
 
 
 export default function HomeScreen({navigation}) {
   const [currencies, setCurrencies] = useState([]);
-  const goToDetails = () => {
-    navigation.navigate('Details');
-  }
+
   useEffect(() => {
     const getApi = async () => {
       setCurrencies(await getRequest());
@@ -26,7 +24,13 @@ export default function HomeScreen({navigation}) {
     <View>
     <Text style={styles.listHeader}>List of Coins</Text>
       {currencies && currencies.map((currency, index) => {
-        return  <CardComponent onPress={goToDetails} key={index} currency={currency}/>
+        return  <CardComponent onPress={() => {
+          navigation.navigate('Details', {
+            id: currency.id,
+            name: currency.name,
+          });
+        }}
+        key={index} currency={currency}/>
       })}
     </View>
     </ScrollView>
