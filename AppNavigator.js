@@ -1,6 +1,7 @@
 
 import React from 'react';
-import {StyleSheet, SafeAreaView} from 'react-navigation';
+import {SafeAreaView} from 'react-navigation';
+import {StyleSheet} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
@@ -30,7 +31,7 @@ function AppNavigator() {
           name="Details"
           component={DetailsScreen}
           options={{
-            title: 'Bitcoin',
+            title: '',
             headerStyle: {
             backgroundColor: '#ee4266',
           },
@@ -48,6 +49,7 @@ function AppNavigator() {
   const styles = StyleSheet.create({
     safeArea: {
       flex: 1,
+      backgroundColor: '#F9F8F9',
     },
   });
   
