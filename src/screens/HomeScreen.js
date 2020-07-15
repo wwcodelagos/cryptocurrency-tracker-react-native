@@ -28,6 +28,9 @@ export default function HomeScreen({navigation}) {
           navigation.navigate('Details', {
             id: currency.id,
             name: currency.name,
+            supply:currency.supply,
+            priceUsd:currency.priceUsd,
+            changePercent24Hr:currency.changePercent24Hr
           });
         }}
         key={index} currency={currency}/>
